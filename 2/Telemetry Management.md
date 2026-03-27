@@ -7,7 +7,7 @@ Initially the work was done with Logstash, and the config / pipeline configs are
 In order to prove that Logstash was redacting before it hit the network, Filebeat was configured to output to the console. See the [Filebeat folder](./Logstash/filebeat-console-debug/).
 
 For the logstash pipeline, this can managed through Kibana:
-- `**`Stack Management` → `Logstash` (or `Pipeline management` / `Ingest` → `Logstash Pipelines`, depending on your Kibana version).
+- `Stack Management` → `Logstash` (or `Pipeline management` / `Ingest` → `Logstash Pipelines`, depending on your Kibana version).
 - Click `Create pipeline` (or `Add pipeline`).
 
 Both demos for PII and log severity were generated using a Cursor-built logging container, running in Docker. The fake logs were taken from an Elastic blog which contained a [python script that generated logs](https://github.com/bvader/elastic-pii/tree/main/python). Cursor took this python script and containerized it.
