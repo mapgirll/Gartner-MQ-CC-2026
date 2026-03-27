@@ -1,0 +1,45 @@
+# Telemetry management stack: log-generator, elastic-agent, logstash -> ES (telemetry-management).
+# Same log-generator pattern; agent uses Fleet in northamerica-northeast1; logstash writes to index "logs".
+
+services:
+  log-generator:
+    image: elastic-pii-log-generator:latest
+    container_name: log-generator-telemetry-mgmt
+    volumes:
+      - logdata:/var/log
+    restart: unless-stopped
+
+  elastic-agent-telemetry-mgmt:
+    image: docker.elastic.co/elastic-agent/elastic-agent:9.3.1
+    container_name: elastic-agent-telemetry-mgmt
+    restart: always
+    user: root
+    environment:
+      - FLEET_ENROLLMENT_TOKEN=
+      - FLEET_ENROLL=1
+      - FLEET_URL=
+    volumes:
+      - logdata:/var/log:ro
+      - elastic-agent-state:/usr/share/elastic-agent/state
+    depends_on:
+      - log-generator
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:9.3.1
+    container_name: logstash-telemetry-mgmt
+    volumes:
+      - ./pipeline:/usr/share/logstash/pipeline
+      - logdata:/var/log
+      - logstash_data:/usr/share/logstash/data
+    ports:
+      - "9610:9600"
+    environment:
+      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
+    restart: unless-stopped
+    depends_on:
+      - log-generator
+
+volumes:
+  logdata:
+  logstash_data:
+  elastic-agent-state:

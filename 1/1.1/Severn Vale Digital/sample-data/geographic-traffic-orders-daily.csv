@@ -1,0 +1,365 @@
+date,city,country,country_iso,latitude,longitude,website_sessions,lead_submissions,orders_placed,revenue_usd,market
+2026-02-01,Evesham,United Kingdom,GB,52.108,-1.932,1208,39,13,3295.5,uk_home
+2026-02-01,Malvern,United Kingdom,GB,52.089,-2.346,952,31,10,2607.5,uk_home
+2026-02-01,Honeybourne,United Kingdom,GB,52.124,-1.786,858,28,9,2249.0,uk_home
+2026-02-01,Worcester,United Kingdom,GB,52.223,-2.236,1091,35,12,2789.5,uk_home
+2026-02-01,Birmingham,United Kingdom,GB,52.494,-1.902,1205,39,13,3048.5,uk_home
+2026-02-01,London,United Kingdom,GB,51.4794,-0.1158,1467,47,16,4395.5,uk_home
+2026-02-01,Dublin,Ireland,IE,53.3698,-6.2603,964,31,10,2677.5,eu
+2026-02-01,Frankfurt,Germany,DE,50.1269,8.6501,780,25,8,1840.5,eu
+2026-02-01,Amsterdam,Netherlands,NL,52.3596,4.9121,695,22,7,1843.0,eu
+2026-02-01,New York,United States,US,40.7328,-74.03,1363,44,15,3400.0,na
+2026-02-01,Seattle,United States,US,47.5862,-122.3201,793,25,8,2056.5,na
+2026-02-01,Ashburn,United States,US,39.0758,-77.4554,657,21,7,1620.5,na
+2026-02-01,Singapore,Singapore,SG,1.3281,103.8078,590,19,6,1599.5,apac
+2026-02-02,Evesham,United Kingdom,GB,52.072,-1.952,1203,40,13,3334.0,uk_home
+2026-02-02,Malvern,United Kingdom,GB,52.117,-2.342,988,33,11,2876.5,uk_home
+2026-02-02,Honeybourne,United Kingdom,GB,52.1,-1.738,855,28,9,2267.0,uk_home
+2026-02-02,Worcester,United Kingdom,GB,52.167,-2.188,1087,36,12,2826.0,uk_home
+2026-02-02,Birmingham,United Kingdom,GB,52.454,-1.89,1253,42,14,3311.0,uk_home
+2026-02-02,London,United Kingdom,GB,51.5154,-0.1238,1513,51,17,4717.5,uk_home
+2026-02-02,Dublin,Ireland,IE,53.3298,-6.2963,982,33,11,2953.5,eu
+2026-02-02,Frankfurt,Germany,DE,50.1429,8.6981,777,26,8,1869.0,eu
+2026-02-02,Amsterdam,Netherlands,NL,52.3356,4.9161,708,23,8,2095.5,eu
+2026-02-02,New York,United States,US,40.7048,-74.022,1374,46,15,3455.0,na
+2026-02-02,Seattle,United States,US,47.6182,-122.3641,816,27,9,2317.5,na
+2026-02-02,Ashburn,United States,US,39.0198,-77.5154,668,22,7,1647.0,na
+2026-02-02,Singapore,Singapore,SG,1.3601,103.8478,611,20,6,1624.0,apac
+2026-02-03,Evesham,United Kingdom,GB,52.092,-1.972,1176,40,13,3360.0,uk_home
+2026-02-03,Malvern,United Kingdom,GB,52.133,-2.342,1010,34,11,2911.0,uk_home
+2026-02-03,Honeybourne,United Kingdom,GB,52.084,-1.77,837,28,9,2285.0,uk_home
+2026-02-03,Worcester,United Kingdom,GB,52.203,-2.22,1063,36,12,2850.0,uk_home
+2026-02-03,Birmingham,United Kingdom,GB,52.462,-1.91,1281,44,14,3364.0,uk_home
+2026-02-03,London,United Kingdom,GB,51.5154,-0.1478,1531,52,17,4764.0,uk_home
+2026-02-03,Dublin,Ireland,IE,53.3538,-6.2323,982,33,11,2975.5,eu
+2026-02-03,Frankfurt,Germany,DE,50.1149,8.6621,761,26,8,1885.0,eu
+2026-02-03,Amsterdam,Netherlands,NL,52.3996,4.8801,707,24,8,2124.0,eu
+2026-02-03,New York,United States,US,40.7208,-73.974,1358,46,15,3485.0,na
+2026-02-03,Seattle,United States,US,47.6302,-122.3241,825,28,9,2348.0,na
+2026-02-03,Ashburn,United States,US,39.0238,-77.4914,668,23,7,1673.5,na
+2026-02-03,Singapore,Singapore,SG,1.3401,103.7958,623,21,7,1879.5,apac
+2026-02-04,Evesham,United Kingdom,GB,52.096,-1.984,1131,39,13,3373.5,uk_home
+2026-02-04,Malvern,United Kingdom,GB,52.109,-2.334,1013,35,11,2945.5,uk_home
+2026-02-04,Honeybourne,United Kingdom,GB,52.084,-1.798,806,28,9,2303.0,uk_home
+2026-02-04,Worcester,United Kingdom,GB,52.207,-2.248,1023,35,11,2659.5,uk_home
+2026-02-04,Birmingham,United Kingdom,GB,52.486,-1.894,1285,44,14,3392.0,uk_home
+2026-02-04,London,United Kingdom,GB,51.4794,-0.1638,1518,53,17,4810.5,uk_home
+2026-02-04,Dublin,Ireland,IE,53.3378,-6.2763,963,33,11,2997.5,eu
+2026-02-04,Frankfurt,Germany,DE,50.0989,8.6541,734,25,8,1888.5,eu
+2026-02-04,Amsterdam,Netherlands,NL,52.3676,4.8961,695,24,8,2140.0,eu
+2026-02-04,New York,United States,US,40.6888,-74.006,1316,45,15,3502.5,na
+2026-02-04,Seattle,United States,US,47.6302,-122.3281,819,28,9,2366.0,na
+2026-02-04,Ashburn,United States,US,39.0118,-77.4554,656,22,7,1675.0,na
+2026-02-04,Singapore,Singapore,SG,1.3681,103.8318,625,21,7,1893.5,apac
+2026-02-05,Evesham,United Kingdom,GB,52.076,-1.948,1075,37,12,3150.5,uk_home
+2026-02-05,Malvern,United Kingdom,GB,52.121,-2.302,998,34,11,2955.0,uk_home
+2026-02-05,Honeybourne,United Kingdom,GB,52.08,-1.746,768,26,8,2077.0,uk_home
+2026-02-05,Worcester,United Kingdom,GB,52.207,-2.252,973,34,11,2669.0,uk_home
+2026-02-05,Birmingham,United Kingdom,GB,52.498,-1.894,1265,44,14,3420.0,uk_home
+2026-02-05,London,United Kingdom,GB,51.5234,-0.1198,1477,51,16,4573.5,uk_home
+2026-02-05,Dublin,Ireland,IE,53.3778,-6.2683,928,32,10,2770.0,eu
+2026-02-05,Frankfurt,Germany,DE,50.0949,8.6461,700,24,8,1892.0,eu
+2026-02-05,Amsterdam,Netherlands,NL,52.3836,4.9321,671,23,7,1911.5,eu
+2026-02-05,New York,United States,US,40.7088,-74.034,1257,43,14,3309.5,na
+2026-02-05,Seattle,United States,US,47.5902,-122.3521,798,27,9,2371.5,na
+2026-02-05,Ashburn,United States,US,39.0598,-77.4674,634,22,7,1689.0,na
+2026-02-05,Singapore,Singapore,SG,1.3441,103.8398,616,21,7,1907.5,apac
+2026-02-06,Evesham,United Kingdom,GB,52.084,-1.912,1015,35,11,2923.5,uk_home
+2026-02-06,Malvern,United Kingdom,GB,52.109,-2.362,967,33,10,2732.5,uk_home
+2026-02-06,Honeybourne,United Kingdom,GB,52.104,-1.75,727,25,8,2080.5,uk_home
+2026-02-06,Worcester,United Kingdom,GB,52.167,-2.184,919,31,10,2447.5,uk_home
+2026-02-06,Birmingham,United Kingdom,GB,52.47,-1.922,1224,42,13,3216.0,uk_home
+2026-02-06,London,United Kingdom,GB,51.4794,-0.1318,1413,48,15,4320.0,uk_home
+2026-02-06,Dublin,Ireland,IE,53.3218,-6.2323,883,30,9,2526.0,eu
+2026-02-06,Frankfurt,Germany,DE,50.0909,8.6701,663,22,7,1682.0,eu
+2026-02-06,Amsterdam,Netherlands,NL,52.3636,4.9081,640,22,7,1913.0,eu
+2026-02-06,New York,United States,US,40.6928,-73.994,1186,40,13,3100.0,na
+2026-02-06,Seattle,United States,US,47.5902,-122.3601,766,26,8,2149.0,na
+2026-02-06,Ashburn,United States,US,39.0598,-77.4634,605,20,6,1474.0,na
+2026-02-06,Singapore,Singapore,SG,1.3761,103.8118,598,20,6,1672.0,apac
+2026-02-07,Evesham,United Kingdom,GB,52.124,-1.924,958,32,10,2680.0,uk_home
+2026-02-07,Malvern,United Kingdom,GB,52.113,-2.314,924,31,9,2493.5,uk_home
+2026-02-07,Honeybourne,United Kingdom,GB,52.088,-1.79,688,23,7,1848.5,uk_home
+2026-02-07,Worcester,United Kingdom,GB,52.175,-2.208,868,29,9,2234.5,uk_home
+2026-02-07,Birmingham,United Kingdom,GB,52.466,-1.87,1168,39,12,2995.5,uk_home
+2026-02-07,London,United Kingdom,GB,51.5194,-0.1518,1336,45,14,4062.5,uk_home
+2026-02-07,Dublin,Ireland,IE,53.3218,-6.2803,833,28,8,2278.0,eu
+2026-02-07,Frankfurt,Germany,DE,50.0869,8.6861,629,21,6,1480.5,eu
+2026-02-07,Amsterdam,Netherlands,NL,52.3796,4.8881,606,20,6,1666.0,eu
+2026-02-07,New York,United States,US,40.7128,-73.982,1115,37,11,2684.5,na
+2026-02-07,Seattle,United States,US,47.5782,-122.3401,728,24,7,1910.0,na
+2026-02-07,Ashburn,United States,US,39.0278,-77.4794,574,19,6,1473.5,na
+2026-02-07,Singapore,Singapore,SG,1.3361,103.8478,574,19,6,1671.5,apac
+2026-02-08,Evesham,United Kingdom,GB,52.068,-1.968,911,29,9,2432.5,uk_home
+2026-02-08,Malvern,United Kingdom,GB,52.085,-2.322,875,28,8,2238.0,uk_home
+2026-02-08,Honeybourne,United Kingdom,GB,52.12,-1.758,657,21,6,1612.5,uk_home
+2026-02-08,Worcester,United Kingdom,GB,52.219,-2.204,827,27,8,2017.5,uk_home
+2026-02-08,Birmingham,United Kingdom,GB,52.486,-1.926,1105,36,11,2771.0,uk_home
+2026-02-08,London,United Kingdom,GB,51.4874,-0.1558,1256,41,12,3536.5,uk_home
+2026-02-08,Dublin,Ireland,IE,53.3298,-6.2763,785,25,7,2013.5,eu
+2026-02-08,Frankfurt,Germany,DE,50.0789,8.7181,600,19,6,1467.5,eu
+2026-02-08,Amsterdam,Netherlands,NL,52.3836,4.8761,573,18,5,1415.0,eu
+2026-02-08,New York,United States,US,40.7328,-73.978,1051,34,10,2465.0,na
+2026-02-08,Seattle,United States,US,47.5822,-122.3001,688,22,7,1899.0,na
+2026-02-08,Ashburn,United States,US,39.0598,-77.4714,543,17,5,1252.5,na
+2026-02-08,Singapore,Singapore,SG,1.3201,103.8478,547,17,5,1417.5,apac
+2026-02-09,Evesham,United Kingdom,GB,52.092,-1.948,880,27,8,2193.5,uk_home
+2026-02-09,Malvern,United Kingdom,GB,52.085,-2.342,827,26,8,2229.0,uk_home
+2026-02-09,Honeybourne,United Kingdom,GB,52.076,-1.746,636,20,6,1612.0,uk_home
+2026-02-09,Worcester,United Kingdom,GB,52.219,-2.212,799,25,7,1796.5,uk_home
+2026-02-09,Birmingham,United Kingdom,GB,52.51,-1.91,1043,32,10,2530.0,uk_home
+2026-02-09,London,United Kingdom,GB,51.5154,-0.0998,1182,37,11,3256.5,uk_home
+2026-02-09,Dublin,Ireland,IE,53.3778,-6.2243,744,23,7,2002.5,eu
+2026-02-09,Frankfurt,Germany,DE,50.0949,8.6861,581,18,5,1260.0,eu
+2026-02-09,Amsterdam,Netherlands,NL,52.3756,4.8761,546,17,5,1412.5,eu
+2026-02-09,New York,United States,US,40.7008,-74.022,1002,31,9,2241.5,na
+2026-02-09,Seattle,United States,US,47.6102,-122.3321,651,20,6,1654.0,na
+2026-02-09,Ashburn,United States,US,39.0118,-77.4754,517,16,5,1250.0,na
+2026-02-09,Singapore,Singapore,SG,1.3361,103.8478,520,16,5,1415.0,apac
+2026-02-10,Evesham,United Kingdom,GB,52.06,-1.972,866,26,8,2197.0,uk_home
+2026-02-10,Malvern,United Kingdom,GB,52.117,-2.322,786,23,7,1967.5,uk_home
+2026-02-10,Honeybourne,United Kingdom,GB,52.104,-1.798,626,18,5,1370.0,uk_home
+2026-02-10,Worcester,United Kingdom,GB,52.171,-2.212,786,23,7,1785.5,uk_home
+2026-02-10,Birmingham,United Kingdom,GB,52.498,-1.914,988,29,9,2297.5,uk_home
+2026-02-10,London,United Kingdom,GB,51.4834,-0.0958,1123,33,10,2972.5,uk_home
+2026-02-10,Dublin,Ireland,IE,53.3458,-6.2603,715,21,6,1744.5,eu
+2026-02-10,Frankfurt,Germany,DE,50.1309,8.7061,573,17,5,1257.5,eu
+2026-02-10,Amsterdam,Netherlands,NL,52.3596,4.9041,526,15,4,1155.5,eu
+2026-02-10,New York,United States,US,40.7368,-73.994,972,29,9,2234.5,na
+2026-02-10,Seattle,United States,US,47.6302,-122.3001,621,18,5,1405.0,na
+2026-02-10,Ashburn,United States,US,39.0118,-77.4754,499,15,4,1035.5,na
+2026-02-10,Singapore,Singapore,SG,1.3521,103.7878,496,15,4,1167.5,apac
+2026-02-11,Evesham,United Kingdom,GB,52.1,-1.936,871,25,7,1964.5,uk_home
+2026-02-11,Malvern,United Kingdom,GB,52.081,-2.338,754,22,6,1727.0,uk_home
+2026-02-11,Honeybourne,United Kingdom,GB,52.084,-1.758,630,18,5,1380.0,uk_home
+2026-02-11,Worcester,United Kingdom,GB,52.219,-2.184,791,23,7,1799.5,uk_home
+2026-02-11,Birmingham,United Kingdom,GB,52.51,-1.866,947,27,8,2073.5,uk_home
+2026-02-11,London,United Kingdom,GB,51.4954,-0.1318,1084,31,9,2709.5,uk_home
+2026-02-11,Dublin,Ireland,IE,53.3738,-6.2323,700,20,6,1744.0,eu
+2026-02-11,Frankfurt,Germany,DE,50.1309,8.6741,576,16,5,1255.0,eu
+2026-02-11,Amsterdam,Netherlands,NL,52.3436,4.8681,515,15,4,1163.5,eu
+2026-02-11,New York,United States,US,40.7128,-74.01,964,28,8,2030.0,na
+2026-02-11,Seattle,United States,US,47.5942,-122.3561,602,17,5,1402.5,na
+2026-02-11,Ashburn,United States,US,39.0198,-77.5234,489,14,4,1031.0,na
+2026-02-11,Singapore,Singapore,SG,1.3481,103.8118,478,13,4,1150.5,apac
+2026-02-12,Evesham,United Kingdom,GB,52.104,-1.976,894,25,7,1978.5,uk_home
+2026-02-12,Malvern,United Kingdom,GB,52.109,-2.334,736,20,6,1714.0,uk_home
+2026-02-12,Honeybourne,United Kingdom,GB,52.096,-1.758,645,18,5,1390.0,uk_home
+2026-02-12,Worcester,United Kingdom,GB,52.187,-2.22,811,23,7,1813.5,uk_home
+2026-02-12,Birmingham,United Kingdom,GB,52.514,-1.902,924,26,8,2077.0,uk_home
+2026-02-12,London,United Kingdom,GB,51.5074,-0.1598,1070,30,9,2715.0,uk_home
+2026-02-12,Dublin,Ireland,IE,53.3178,-6.2603,701,19,6,1743.5,eu
+2026-02-12,Frankfurt,Germany,DE,50.1349,8.6461,590,16,5,1265.0,eu
+2026-02-12,Amsterdam,Netherlands,NL,52.3996,4.8881,516,14,4,1159.0,eu
+2026-02-12,New York,United States,US,40.7048,-74.018,979,27,8,2033.5,na
+2026-02-12,Seattle,United States,US,47.6142,-122.3281,595,16,5,1400.0,na
+2026-02-12,Ashburn,United States,US,39.0118,-77.5034,489,13,4,1026.5,na
+2026-02-12,Singapore,Singapore,SG,1.3281,103.7958,468,13,4,1158.5,apac
+2026-02-13,Evesham,United Kingdom,GB,52.104,-1.968,934,26,8,2245.0,uk_home
+2026-02-13,Malvern,United Kingdom,GB,52.141,-2.354,733,20,6,1726.0,uk_home
+2026-02-13,Honeybourne,United Kingdom,GB,52.088,-1.734,672,18,5,1400.0,uk_home
+2026-02-13,Worcester,United Kingdom,GB,52.223,-2.2,846,23,7,1827.5,uk_home
+2026-02-13,Birmingham,United Kingdom,GB,52.474,-1.914,920,25,8,2080.5,uk_home
+2026-02-13,London,United Kingdom,GB,51.5154,-0.1278,1081,30,9,2733.0,uk_home
+2026-02-13,Dublin,Ireland,IE,53.3658,-6.2363,717,20,6,1768.0,eu
+2026-02-13,Frankfurt,Germany,DE,50.0909,8.7181,614,17,5,1287.5,eu
+2026-02-13,Amsterdam,Netherlands,NL,52.3836,4.9161,527,14,4,1167.0,eu
+2026-02-13,New York,United States,US,40.7448,-74.042,1015,28,8,2062.0,na
+2026-02-13,Seattle,United States,US,47.6342,-122.3241,600,16,5,1410.0,na
+2026-02-13,Ashburn,United States,US,39.0558,-77.5074,500,14,4,1047.0,na
+2026-02-13,Singapore,Singapore,SG,1.3241,103.7998,466,13,4,1166.5,apac
+2026-02-14,Evesham,United Kingdom,GB,52.076,-1.968,985,27,8,2273.5,uk_home
+2026-02-14,Malvern,United Kingdom,GB,52.137,-2.338,746,20,6,1738.0,uk_home
+2026-02-14,Honeybourne,United Kingdom,GB,52.076,-1.77,707,19,6,1659.5,uk_home
+2026-02-14,Worcester,United Kingdom,GB,52.203,-2.216,893,25,8,2088.5,uk_home
+2026-02-14,Birmingham,United Kingdom,GB,52.462,-1.914,936,26,8,2109.0,uk_home
+2026-02-14,London,United Kingdom,GB,51.5154,-0.0998,1116,31,10,3027.5,uk_home
+2026-02-14,Dublin,Ireland,IE,53.3298,-6.2363,747,20,6,1780.0,eu
+2026-02-14,Frankfurt,Germany,DE,50.0909,8.6541,645,18,5,1310.0,eu
+2026-02-14,Amsterdam,Netherlands,NL,52.3916,4.8721,547,15,4,1187.5,eu
+2026-02-14,New York,United States,US,40.6888,-74.022,1068,29,9,2306.5,na
+2026-02-14,Seattle,United States,US,47.5902,-122.3361,618,17,5,1432.5,na
+2026-02-14,Ashburn,United States,US,39.0758,-77.5194,519,14,4,1055.0,na
+2026-02-14,Singapore,Singapore,SG,1.3281,103.8078,473,13,4,1174.5,apac
+2026-02-15,Evesham,United Kingdom,GB,52.06,-1.98,1044,29,9,2558.5,uk_home
+2026-02-15,Malvern,United Kingdom,GB,52.109,-2.29,772,21,7,2012.5,uk_home
+2026-02-15,Honeybourne,United Kingdom,GB,52.072,-1.75,747,21,6,1696.5,uk_home
+2026-02-15,Worcester,United Kingdom,GB,52.215,-2.252,945,26,8,2117.0,uk_home
+2026-02-15,Birmingham,United Kingdom,GB,52.506,-1.886,971,27,9,2362.5,uk_home
+2026-02-15,London,United Kingdom,GB,51.5194,-0.1438,1173,33,10,3072.5,uk_home
+2026-02-15,Dublin,Ireland,IE,53.3658,-6.2763,788,22,7,2074.0,eu
+2026-02-15,Frankfurt,Germany,DE,50.1149,8.7021,681,19,6,1551.5,eu
+2026-02-15,Amsterdam,Netherlands,NL,52.3756,4.9041,576,16,5,1460.0,eu
+2026-02-15,New York,United States,US,40.7368,-73.982,1134,32,10,2580.0,na
+2026-02-15,Seattle,United States,US,47.6382,-122.3641,646,18,6,1701.0,na
+2026-02-15,Ashburn,United States,US,39.0638,-77.4914,545,15,5,1297.5,na
+2026-02-15,Singapore,Singapore,SG,1.3321,103.7958,489,13,4,1182.5,apac
+2026-02-16,Evesham,United Kingdom,GB,52.124,-1.936,1103,32,10,2860.0,uk_home
+2026-02-16,Malvern,United Kingdom,GB,52.137,-2.314,811,23,7,2051.5,uk_home
+2026-02-16,Honeybourne,United Kingdom,GB,52.108,-1.746,787,23,7,1974.5,uk_home
+2026-02-16,Worcester,United Kingdom,GB,52.207,-2.252,997,29,9,2396.5,uk_home
+2026-02-16,Birmingham,United Kingdom,GB,52.458,-1.898,1022,29,9,2405.5,uk_home
+2026-02-16,London,United Kingdom,GB,51.5314,-0.1558,1245,36,12,3666.0,uk_home
+2026-02-16,Dublin,Ireland,IE,53.3338,-6.2283,837,24,8,2372.0,eu
+2026-02-16,Frankfurt,Germany,DE,50.1189,8.6461,716,20,6,1576.0,eu
+2026-02-16,Amsterdam,Netherlands,NL,52.3396,4.8881,609,17,5,1482.5,eu
+2026-02-16,New York,United States,US,40.7368,-74.002,1206,35,11,2857.5,na
+2026-02-16,Seattle,United States,US,47.5782,-122.3241,682,19,6,1725.5,na
+2026-02-16,Ashburn,United States,US,39.0118,-77.4634,576,16,5,1320.0,na
+2026-02-16,Singapore,Singapore,SG,1.3441,103.8158,511,14,4,1203.0,apac
+2026-02-17,Evesham,United Kingdom,GB,52.124,-1.98,1154,35,11,3165.5,uk_home
+2026-02-17,Malvern,United Kingdom,GB,52.089,-2.354,858,26,8,2357.0,uk_home
+2026-02-17,Honeybourne,United Kingdom,GB,52.116,-1.75,821,24,8,2244.0,uk_home
+2026-02-17,Worcester,United Kingdom,GB,52.179,-2.212,1043,31,10,2667.5,uk_home
+2026-02-17,Birmingham,United Kingdom,GB,52.51,-1.906,1083,32,11,2919.0,uk_home
+2026-02-17,London,United Kingdom,GB,51.4914,-0.1478,1325,40,13,4010.0,uk_home
+2026-02-17,Dublin,Ireland,IE,53.3738,-6.2803,887,26,9,2674.0,eu
+2026-02-17,Frankfurt,Germany,DE,50.1349,8.6581,748,22,7,1836.0,eu
+2026-02-17,Amsterdam,Netherlands,NL,52.3436,4.8681,643,19,6,1773.5,eu
+2026-02-17,New York,United States,US,40.7368,-74.022,1274,38,13,3361.0,na
+2026-02-17,Seattle,United States,US,47.6222,-122.3481,722,21,7,2012.5,na
+2026-02-17,Ashburn,United States,US,39.0758,-77.4834,608,18,6,1581.0,na
+2026-02-17,Singapore,Singapore,SG,1.3761,103.8238,537,16,5,1495.0,apac
+2026-02-18,Evesham,United Kingdom,GB,52.108,-1.98,1191,37,12,3462.5,uk_home
+2026-02-18,Malvern,United Kingdom,GB,52.105,-2.29,908,28,9,2654.0,uk_home
+2026-02-18,Honeybourne,United Kingdom,GB,52.132,-1.742,847,26,9,2530.0,uk_home
+2026-02-18,Worcester,United Kingdom,GB,52.187,-2.212,1076,33,11,2942.5,uk_home
+2026-02-18,Birmingham,United Kingdom,GB,52.47,-1.882,1148,36,12,3222.0,uk_home
+2026-02-18,London,United Kingdom,GB,51.5354,-0.1478,1404,44,15,4630.0,uk_home
+2026-02-18,Dublin,Ireland,IE,53.3418,-6.2843,931,29,9,2729.5,eu
+2026-02-18,Frankfurt,Germany,DE,50.0949,8.6661,770,24,8,2100.0,eu
+2026-02-18,Amsterdam,Netherlands,NL,52.3876,4.8681,673,21,7,2068.5,eu
+2026-02-18,New York,United States,US,40.7128,-74.01,1329,41,14,3648.5,na
+2026-02-18,Seattle,United States,US,47.6182,-122.3641,762,24,8,2316.0,na
+2026-02-18,Ashburn,United States,US,39.0478,-77.4994,636,20,6,1618.0,na
+2026-02-18,Singapore,Singapore,SG,1.3521,103.8438,565,17,6,1778.5,apac
+2026-02-19,Evesham,United Kingdom,GB,52.092,-1.968,797,24,7,2064.0,uk_home
+2026-02-19,Malvern,United Kingdom,GB,52.125,-2.326,629,19,5,1527.5,uk_home
+2026-02-19,Honeybourne,United Kingdom,GB,52.092,-1.77,566,17,5,1447.5,uk_home
+2026-02-19,Worcester,United Kingdom,GB,52.215,-2.232,720,21,6,1654.5,uk_home
+2026-02-19,Birmingham,United Kingdom,GB,52.482,-1.926,797,24,7,1931.0,uk_home
+2026-02-19,London,United Kingdom,GB,51.4874,-0.1558,970,29,9,2828.5,uk_home
+2026-02-19,Dublin,Ireland,IE,53.3338,-6.2843,868,27,8,2457.5,eu
+2026-02-19,Frankfurt,Germany,DE,50.0869,8.6821,702,22,6,1637.0,eu
+2026-02-19,Amsterdam,Netherlands,NL,52.3436,4.8961,626,19,5,1537.5,eu
+2026-02-19,New York,United States,US,40.7048,-74.002,1282,40,13,3438.0,na
+2026-02-19,Seattle,United States,US,47.6382,-122.3201,747,23,7,2065.5,na
+2026-02-19,Ashburn,United States,US,39.0118,-77.4714,618,19,6,1617.5,na
+2026-02-19,Singapore,Singapore,SG,1.3841,103.8038,567,17,5,1527.5,apac
+2026-02-20,Evesham,United Kingdom,GB,52.06,-1.948,1202,40,13,3802.0,uk_home
+2026-02-20,Malvern,United Kingdom,GB,52.141,-2.294,990,33,11,3272.5,uk_home
+2026-02-20,Honeybourne,United Kingdom,GB,52.092,-1.754,854,28,9,2591.0,uk_home
+2026-02-20,Worcester,United Kingdom,GB,52.175,-2.256,1086,36,12,3258.0,uk_home
+2026-02-20,Birmingham,United Kingdom,GB,52.498,-1.922,1255,42,14,3815.0,uk_home
+2026-02-20,London,United Kingdom,GB,51.4994,-0.1638,1515,51,17,5329.5,uk_home
+2026-02-20,Dublin,Ireland,IE,53.3738,-6.2803,983,33,11,3349.5,eu
+2026-02-20,Frankfurt,Germany,DE,50.0909,8.6861,777,26,8,2157.0,eu
+2026-02-20,Amsterdam,Netherlands,NL,52.3676,4.8881,708,23,8,2383.5,eu
+2026-02-20,New York,United States,US,40.6808,-74.01,1374,46,15,3995.0,na
+2026-02-20,Seattle,United States,US,47.5902,-122.3481,817,27,9,2641.5,na
+2026-02-20,Ashburn,United States,US,39.0518,-77.4594,669,22,7,1899.0,na
+2026-02-20,Singapore,Singapore,SG,1.3721,103.8158,611,20,7,2105.0,apac
+2026-02-21,Evesham,United Kingdom,GB,52.104,-1.944,1174,40,13,3828.0,uk_home
+2026-02-21,Malvern,United Kingdom,GB,52.085,-2.358,1010,34,11,3307.0,uk_home
+2026-02-21,Honeybourne,United Kingdom,GB,52.128,-1.778,835,28,9,2609.0,uk_home
+2026-02-21,Worcester,United Kingdom,GB,52.203,-2.228,1061,36,12,3282.0,uk_home
+2026-02-21,Birmingham,United Kingdom,GB,52.51,-1.906,1281,44,14,3868.0,uk_home
+2026-02-21,London,United Kingdom,GB,51.4794,-0.1158,1531,52,17,5376.0,uk_home
+2026-02-21,Dublin,Ireland,IE,53.3618,-6.2483,981,33,11,3371.5,eu
+2026-02-21,Frankfurt,Germany,DE,50.1229,8.6541,760,26,8,2173.0,eu
+2026-02-21,Amsterdam,Netherlands,NL,52.3956,4.9081,707,24,8,2412.0,eu
+2026-02-21,New York,United States,US,40.7248,-73.994,1356,46,15,4025.0,na
+2026-02-21,Seattle,United States,US,47.6302,-122.3241,825,28,9,2672.0,na
+2026-02-21,Ashburn,United States,US,39.0518,-77.5194,668,23,7,1925.5,na
+2026-02-21,Singapore,Singapore,SG,1.3601,103.8158,623,21,7,2131.5,apac
+2026-02-22,Evesham,United Kingdom,GB,52.064,-1.948,1129,39,13,3841.5,uk_home
+2026-02-22,Malvern,United Kingdom,GB,52.125,-2.326,1013,35,11,3341.5,uk_home
+2026-02-22,Honeybourne,United Kingdom,GB,52.1,-1.758,804,28,9,2627.0,uk_home
+2026-02-22,Worcester,United Kingdom,GB,52.223,-2.188,1021,35,11,3055.5,uk_home
+2026-02-22,Birmingham,United Kingdom,GB,52.466,-1.854,1285,44,14,3896.0,uk_home
+2026-02-22,London,United Kingdom,GB,51.5354,-0.1558,1517,53,17,5422.5,uk_home
+2026-02-22,Dublin,Ireland,IE,53.3378,-6.2403,962,33,11,3393.5,eu
+2026-02-22,Frankfurt,Germany,DE,50.1189,8.6461,732,25,8,2176.5,eu
+2026-02-22,Amsterdam,Netherlands,NL,52.3756,4.9361,694,24,8,2428.0,eu
+2026-02-22,New York,United States,US,40.6928,-73.982,1314,45,15,4042.5,na
+2026-02-22,Seattle,United States,US,47.6262,-122.3041,818,28,9,2690.0,na
+2026-02-22,Ashburn,United States,US,39.0358,-77.5034,655,22,7,1927.0,na
+2026-02-22,Singapore,Singapore,SG,1.3241,103.7878,624,21,7,2145.5,apac
+2026-02-23,Evesham,United Kingdom,GB,52.116,-1.984,1072,37,12,3582.5,uk_home
+2026-02-23,Malvern,United Kingdom,GB,52.125,-2.362,997,34,11,3351.0,uk_home
+2026-02-23,Honeybourne,United Kingdom,GB,52.1,-1.79,766,26,8,2365.0,uk_home
+2026-02-23,Worcester,United Kingdom,GB,52.203,-2.216,970,33,11,3052.5,uk_home
+2026-02-23,Birmingham,United Kingdom,GB,52.478,-1.862,1264,44,14,3924.0,uk_home
+2026-02-23,London,United Kingdom,GB,51.4914,-0.1118,1474,51,16,5149.5,uk_home
+2026-02-23,Dublin,Ireland,IE,53.3458,-6.2363,927,32,10,3130.0,eu
+2026-02-23,Frankfurt,Germany,DE,50.1109,8.7101,698,24,7,1945.0,eu
+2026-02-23,Amsterdam,Netherlands,NL,52.3516,4.9401,670,23,7,2163.5,eu
+2026-02-23,New York,United States,US,40.6968,-73.986,1253,43,14,3813.5,na
+2026-02-23,Seattle,United States,US,47.5862,-122.3481,797,27,9,2695.5,na
+2026-02-23,Ashburn,United States,US,39.0718,-77.4794,633,22,7,1941.0,na
+2026-02-23,Singapore,Singapore,SG,1.3721,103.7838,615,21,7,2159.5,apac
+2026-02-24,Evesham,United Kingdom,GB,52.1,-1.964,1012,34,11,3307.0,uk_home
+2026-02-24,Malvern,United Kingdom,GB,52.097,-2.302,965,33,10,3092.5,uk_home
+2026-02-24,Honeybourne,United Kingdom,GB,52.092,-1.742,725,25,8,2368.5,uk_home
+2026-02-24,Worcester,United Kingdom,GB,52.211,-2.216,916,31,10,2807.5,uk_home
+2026-02-24,Birmingham,United Kingdom,GB,52.458,-1.918,1222,42,13,3684.0,uk_home
+2026-02-24,London,United Kingdom,GB,51.5154,-0.1598,1409,48,15,4860.0,uk_home
+2026-02-24,Dublin,Ireland,IE,53.3658,-6.2603,881,30,9,2850.0,eu
+2026-02-24,Frankfurt,Germany,DE,50.0869,8.6461,661,22,7,1934.0,eu
+2026-02-24,Amsterdam,Netherlands,NL,52.3356,4.8721,639,22,7,2165.0,eu
+2026-02-24,New York,United States,US,40.7208,-74.03,1183,40,13,3568.0,na
+2026-02-24,Seattle,United States,US,47.5862,-122.3281,764,26,8,2437.0,na
+2026-02-24,Ashburn,United States,US,39.0638,-77.4794,604,20,6,1690.0,na
+2026-02-24,Singapore,Singapore,SG,1.3401,103.8078,597,20,6,1888.0,apac
+2026-02-25,Evesham,United Kingdom,GB,52.08,-1.972,955,32,10,3040.0,uk_home
+2026-02-25,Malvern,United Kingdom,GB,52.093,-2.354,921,31,9,2817.5,uk_home
+2026-02-25,Honeybourne,United Kingdom,GB,52.088,-1.786,687,23,7,2100.5,uk_home
+2026-02-25,Worcester,United Kingdom,GB,52.159,-2.244,866,29,9,2558.5,uk_home
+2026-02-25,Birmingham,United Kingdom,GB,52.466,-1.902,1165,39,12,3427.5,uk_home
+2026-02-25,London,United Kingdom,GB,51.5114,-0.1518,1332,44,14,4554.0,uk_home
+2026-02-25,Dublin,Ireland,IE,53.3498,-6.2803,831,27,8,2553.5,eu
+2026-02-25,Frankfurt,Germany,DE,50.1229,8.6821,627,21,6,1696.5,eu
+2026-02-25,Amsterdam,Netherlands,NL,52.3676,4.8841,605,20,6,1882.0,eu
+2026-02-25,New York,United States,US,40.7248,-73.982,1112,37,11,3080.5,na
+2026-02-25,Seattle,United States,US,47.6222,-122.3241,726,24,7,2162.0,na
+2026-02-25,Ashburn,United States,US,39.0398,-77.5154,572,19,6,1689.5,na
+2026-02-25,Singapore,Singapore,SG,1.3561,103.8198,573,19,6,1887.5,apac
+2026-02-26,Evesham,United Kingdom,GB,52.068,-1.944,910,29,9,2756.5,uk_home
+2026-02-26,Malvern,United Kingdom,GB,52.077,-2.302,873,28,8,2526.0,uk_home
+2026-02-26,Honeybourne,United Kingdom,GB,52.128,-1.754,656,21,6,1828.5,uk_home
+2026-02-26,Worcester,United Kingdom,GB,52.203,-2.212,825,26,8,2293.0,uk_home
+2026-02-26,Birmingham,United Kingdom,GB,52.502,-1.922,1102,35,11,3154.5,uk_home
+2026-02-26,London,United Kingdom,GB,51.5354,-0.1438,1252,40,12,3956.0,uk_home
+2026-02-26,Dublin,Ireland,IE,53.3578,-6.2643,783,25,7,2265.5,eu
+2026-02-26,Frankfurt,Germany,DE,50.1189,8.6501,599,19,6,1683.5,eu
+2026-02-26,Amsterdam,Netherlands,NL,52.3396,4.9321,572,18,5,1595.0,eu
+2026-02-26,New York,United States,US,40.7288,-74.022,1049,34,10,2825.0,na
+2026-02-26,Seattle,United States,US,47.5782,-122.3521,686,22,6,1883.0,na
+2026-02-26,Ashburn,United States,US,39.0638,-77.4954,542,17,5,1432.5,na
+2026-02-26,Singapore,Singapore,SG,1.3681,103.8558,545,17,5,1597.5,apac
+2026-02-27,Evesham,United Kingdom,GB,52.096,-1.968,879,27,8,2481.5,uk_home
+2026-02-27,Malvern,United Kingdom,GB,52.129,-2.29,825,25,7,2230.5,uk_home
+2026-02-27,Honeybourne,United Kingdom,GB,52.076,-1.746,635,19,6,1815.5,uk_home
+2026-02-27,Worcester,United Kingdom,GB,52.187,-2.22,798,25,7,2048.5,uk_home
+2026-02-27,Birmingham,United Kingdom,GB,52.502,-1.882,1040,32,10,2890.0,uk_home
+2026-02-27,London,United Kingdom,GB,51.5154,-0.1478,1179,37,11,3652.5,uk_home
+2026-02-27,Dublin,Ireland,IE,53.3738,-6.2363,743,23,7,2254.5,eu
+2026-02-27,Frankfurt,Germany,DE,50.1389,8.6541,581,18,5,1440.0,eu
+2026-02-27,Amsterdam,Netherlands,NL,52.3996,4.9121,544,17,5,1592.5,eu
+2026-02-27,New York,United States,US,40.6968,-74.03,1000,31,9,2565.5,na
+2026-02-27,Seattle,United States,US,47.6102,-122.3241,649,20,6,1870.0,na
+2026-02-27,Ashburn,United States,US,39.0438,-77.4994,516,16,4,1184.0,na
+2026-02-27,Singapore,Singapore,SG,1.3721,103.8038,518,16,5,1595.0,apac
+2026-02-28,Evesham,United Kingdom,GB,52.1,-1.96,866,26,8,2485.0,uk_home
+2026-02-28,Malvern,United Kingdom,GB,52.109,-2.362,784,23,7,2219.5,uk_home
+2026-02-28,Honeybourne,United Kingdom,GB,52.068,-1.77,626,18,5,1550.0,uk_home
+2026-02-28,Worcester,United Kingdom,GB,52.195,-2.232,786,23,7,2037.5,uk_home
+2026-02-28,Birmingham,United Kingdom,GB,52.506,-1.918,986,29,9,2621.5,uk_home
+2026-02-28,London,United Kingdom,GB,51.4754,-0.1638,1121,33,10,3332.5,uk_home
+2026-02-28,Dublin,Ireland,IE,53.3618,-6.2403,714,21,6,1960.5,eu
+2026-02-28,Frankfurt,Germany,DE,50.1109,8.6821,573,17,5,1437.5,eu
+2026-02-28,Amsterdam,Netherlands,NL,52.3516,4.9401,525,15,4,1299.5,eu
+2026-02-28,New York,United States,US,40.7368,-74.026,972,29,8,2314.5,na
+2026-02-28,Seattle,United States,US,47.6062,-122.3241,620,18,5,1585.0,na
+2026-02-28,Ashburn,United States,US,39.0718,-77.4794,498,15,4,1179.5,na
+2026-02-28,Singapore,Singapore,SG,1.3441,103.8238,495,14,4,1299.0,apac

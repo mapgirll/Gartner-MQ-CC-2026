@@ -1,0 +1,174 @@
+# =============================================================================
+# Unauthorized Deployments - Day of the Week
+# =============================================================================
+# Detects ArgoCD "Initialized new operation" (syncs) that occurred on an
+# unauthorized day (Friday, Saturday, Sunday, Monday). For each such operation,
+# finds the latest revision from an approved day (Tuesday, Wednesday, Thursday)
+# and syncs the application back to that revision.
+# =============================================================================
+version: "1"
+name: Unauthorized Deployments - Day of the Week
+description: Detects ArgoCD syncs on unauthorized days (Fri/Sat/Sun/Mon), finds
+  the latest revision from an approved day (Tue/Wed/Thu), and syncs the
+  application back to that revision.
+enabled: true
+triggers:
+  - type: manual
+  - type: alert
+inputs:
+  - name: argocd_user
+    description: username for the argocd UI
+    type: string
+    default: "admin"
+  - name: argocd_pwd
+    description: password for the argocd UI
+    type: string
+    default: "password"
+  - name: argocd_url
+    description: base URL for the ArgoCD API (e.g. http://your-argocd-host)
+    type: string
+    default: "url"
+
+steps:
+  # --- Check that the triggering alert is on an unauthorized day (Fri/Sat/Sun/Mon).
+  #     Query latest matching alert in last 30 min; use kibana.alert.start for day.
+  #     Only return a row when that day is unauthorized; else workflow stops below. ---
+  - name: check_alert_day
+    type: elasticsearch.esql.query
+    with:
+      query: |
+        FROM .alerts-*
+        | WHERE @timestamp >= NOW() - 30 minutes
+        | WHERE kibana.alert.rule.name LIKE "*Deployment Out of Sync*"
+           OR kibana.alert.rule.name LIKE "*Deleted Deployment*"
+           OR kibana.alert.rule.name LIKE "*New Deployment*"
+           OR kibana.alert.rule.name LIKE "*Unauthorized ArgoCD Deployments*"
+           OR rule.name LIKE "*Deployment Out of Sync*"
+           OR rule.name LIKE "*Deleted Deployment*"
+           OR rule.name LIKE "*New Deployment*"
+           OR rule.name LIKE "*Unauthorized ArgoCD Deployments*"
+        | EVAL alert_start = COALESCE(DATE_PARSE("strict_date_optional_time", TO_STRING(kibana.alert.start)), @timestamp)
+        | EVAL weekday = DAY_NAME(alert_start)
+        | WHERE weekday == "Friday" OR weekday == "Saturday" OR weekday == "Sunday" OR weekday == "Thursday"
+        | KEEP @timestamp, kibana.alert.start, weekday, kibana.alert.rule.name
+        | SORT @timestamp DESC
+        | LIMIT 1
+
+  # --- Only continue if the alert is on an unauthorized day (query returned a row) ---
+  - name: if_alert_on_unauthorized_day
+    type: if
+    condition: "steps.check_alert_day.output.values.0.0: *"
+    steps:
+      # --- Authenticate with ArgoCD ---
+      - name: get_argocd_token
+        type: http
+        with:
+          url: "{{ inputs.argocd_url }}/api/v1/session"
+          method: POST
+          headers:
+            Content-Type: application/json
+          body:
+            username: "{{ inputs.argocd_user }}"
+            password: "{{ inputs.argocd_pwd }}"
+          timeout: 30s
+
+      # --- Find ArgoCD "Initialized new operation" events in the last 24h that occurred on an
+      #     unauthorized day (Fri/Sat/Sun/Mon) only; keep timestamp, weekday, application ---
+      - name: get_argocd_operations
+        type: elasticsearch.esql.query
+        with:
+          query: |
+            FROM logs.argocd, logs.argocd.*
+            | WHERE @timestamp > NOW() - 24 hours
+            | WHERE body.text LIKE "*Initialized new operation*"
+            | GROK body.text "%{GREEDYDATA}\"application\":\"%{DATA:application}\"%{GREEDYDATA}"
+            | EVAL weekday = DAY_NAME(@timestamp)
+            | WHERE weekday == "Friday" OR weekday == "Saturday" OR weekday == "Sunday" OR weekday == "Thursday"
+            | KEEP @timestamp, weekday, application
+            | SORT @timestamp DESC
+
+      # --- For each unauthorized-day operation: get latest revision from approved day (Tue/Wed/Thu), sync back ---
+      - name: loop_over_operations
+        type: foreach
+        foreach: "{{ steps.get_argocd_operations.output.values }}"
+        on-failure:
+          continue: true
+        steps:
+          # foreach.item[0]=@timestamp, [1]=weekday, [2]=application
+          - name: print_unauthorized_day
+            type: console
+            with:
+              message: |-
+                [Unauthorized day] Application {{ foreach.item[2] | json }} was synced on {{ foreach.item[1] | json }}. Looking up latest revision from an approved day (Tue/Wed/Thu) and syncing back.
+          - name: get_latest_approved_revision
+            type: elasticsearch.esql.query
+            with:
+              query: |
+                FROM logs.argocd, logs.argocd.*
+                | WHERE @timestamp > NOW() - 90 days
+                | WHERE body.text LIKE "*Initialized new operation*"
+                | GROK body.text "%{GREEDYDATA}\"application\":\"%{DATA:application}\"%{GREEDYDATA}"
+                | GROK body.text "%{GREEDYDATA}Revision:%{DATA:revision}%{GREEDYDATA}"
+                | EVAL weekday = DAY_NAME(@timestamp)
+                | WHERE weekday == "Tuesday" OR weekday == "Wednesday" OR weekday == "Monday"
+                | WHERE application == "{{ foreach.item[2] }}"
+                | SORT @timestamp DESC
+                | KEEP revision, @timestamp, application, weekday
+                | LIMIT 1
+          # Branch on whether we have a valid revision (approved-day sync exists); else delete app
+          # KQL: "path: *" means value exists; use dot notation for array index (values.0.0 = first row, first column)
+          - name: if_has_valid_revision
+            type: if
+            condition: "steps.get_latest_approved_revision.output.values.0.0: *"
+            steps:
+              - name: get_argocd_application
+                type: http
+                with:
+                  url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[2] | uniq}}"
+                  method: GET
+                  headers:
+                    Content-Type: application/json
+                    Authorization: "Bearer {{ steps.get_argocd_token.output.data.token }}"
+                  timeout: 30s
+              - name: sync_to_approved_revision
+                type: http
+                with:
+                  url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[2] |uniq}}/sync"
+                  method: POST
+                  headers:
+                    Content-Type: application/json
+                    Authorization: "Bearer {{ steps.get_argocd_token.output.data.token }}"
+                  body:
+                    revision: "{{ steps.get_latest_approved_revision.output.values[0][0] }}"
+                  timeout: 30s
+              - name: print_sync_result
+                type: console
+                with:
+                  message: |-
+                    [Sync complete] Application {{ foreach.item[2] | json }} synced back to revision from an approved day. Revision: {{ steps.get_latest_approved_revision.output.values[0][0] | json }}.
+            else:
+              - name: print_no_valid_revision
+                type: console
+                with:
+                  message: |-
+                    [No approved revision] Application {{ foreach.item[2] | json }} has no syncs on approved days (Tue/Wed/Thu) in the last 90 days, or revision is blank (new deployment). Deleting application.
+              - name: delete_argocd_application
+                type: http
+                with:
+                  url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[2] | uniq}}"
+                  method: DELETE
+                  headers:
+                    Content-Type: application/json
+                    Authorization: "Bearer {{ steps.get_argocd_token.output.data.token }}"
+                  timeout: 30s
+              - name: print_delete_result
+                type: console
+                with:
+                  message: |-
+                    [Deleted] Application {{ foreach.item[2] | json }} has been deleted from ArgoCD.
+    else:
+      - name: print_alert_on_approved_day
+        type: console
+        with:
+          message: |-
+            [Stopped] The triggering alert is on an approved day (Monday, Tuesday, Wednesday). Workflow did not run. No action taken.

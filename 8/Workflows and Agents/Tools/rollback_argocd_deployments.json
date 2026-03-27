@@ -1,0 +1,36 @@
+{
+  "id": "rollback_argocd_deployments",
+  "type": "workflow",
+  "description": "Run the workflow to find and rollback OutOfSync ArgoCD deployments.",
+  "tags": [
+    "argocd"
+  ],
+  "configuration": {
+    "workflow_id": "workflow-99e738ff-349c-4fb3-94d9-5c6289993c14",
+    "wait_for_completion": true
+  },
+  "readonly": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "argocd_user": {
+        "type": "string",
+        "description": "username for the argocd UI",
+        "default": "admin"
+      },
+      "argocd_pwd": {
+        "type": "string",
+        "description": "password for the argocd UI",
+        "default": "PASSWORD"
+      },
+      "argocd_url": {
+        "type": "string",
+        "description": "base URL for the ArgoCD API (e.g. http://your-argocd-host)",
+        "default": "URL"
+      }
+    },
+    "additionalProperties": false,
+    "description": "Parameters needed to execute the workflow",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

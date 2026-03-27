@@ -1,0 +1,85 @@
+# Example EDOT Collector config with elasticsearch, filterprocessor, redactionprocessor, and awss3 exporter.
+# Use with the custom image built from this repo (EDOT + awss3exporter + filterprocessor + redactionprocessor).
+#
+# Refs:
+#   https://www.elastic.co/docs/reference/edot-collector/config/default-config-standalone
+#   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awss3exporter
+#   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor
+#   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+  batch:
+    timeout: 10s
+    send_batch_size: 1024
+  # Example: drop or include only certain spans/metrics/logs
+  filter/traces:
+    traces:
+      span:
+        include:
+          match_type: regexp
+          attributes:
+            - key: service.name
+              value: "my-service.*"
+  # Redaction: keep only allowed attribute keys and mask blocked values (e.g. PII, tokens).
+  # See https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor
+  redaction:
+    allow_all_keys: false
+    allowed_keys:
+      - description
+      - service.name
+      - http.method
+      - http.status_code
+    ignored_keys:
+      - safe_attribute
+    blocked_key_patterns:
+      - ".*token.*"
+      - ".*api_key.*"
+    blocked_values:
+      - "(?:[0-9]{1,3}\\.){3}[0-9]{1,3}"   # IPv4
+    summary: info
+
+exporters:
+  elasticsearch/otel:
+    endpoints:
+      - ${ELASTIC_ENDPOINT}
+    api_key: ${ELASTIC_API_KEY}
+    mapping:
+      mode: otel
+  # Optional: archive telemetry to S3 (e.g. OTLP JSON). Set AWS_REGION, S3_BUCKET, and optional prefix.
+  awss3:
+    s3uploader:
+      region: ${AWS_REGION:-us-east-1}
+      s3_bucket: ${S3_BUCKET}
+      s3_prefix: ${S3_PREFIX:-otel}
+    marshaler: otlp_json
+    # sending_queue and compression are optional; tune for throughput.
+    # sending_queue:
+    #   enabled: true
+    #   num_consumers: 4
+    #   queue_size: 1000
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, filter/traces, redaction, batch]
+      exporters: [elasticsearch/otel, awss3]
+    metrics:
+      receivers: [otlp]
+      processors: [memory_limiter, redaction, batch]
+      exporters: [elasticsearch/otel, awss3]
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, redaction, batch]
+      exporters: [elasticsearch/otel, awss3]

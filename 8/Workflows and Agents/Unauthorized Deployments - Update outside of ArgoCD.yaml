@@ -1,0 +1,213 @@
+# =============================================================================
+# Unauthorized Deployments - Update outside of ArgoCD
+# =============================================================================
+# Gartner demo: Shows how a DevOps engineer can continuously monitor production
+# to detect an unauthorized deployment and trigger an automated rollback.
+# This workflow: (1) finds apps that went OutOfSync without an ArgoCD-initiated
+# sync in the same 1-minute window, (2) confirms status with ArgoCD, (3) rolls
+# back to the previous revision, (4) waits and rechecks until the app is back
+# in sync, with progress reported to the console at each step.
+# =============================================================================
+version: "1"
+name: Unauthorized Deployments - Update outside of ArgoCD
+description: Detects OutOfSync events without a matching ArgoCD "Initialized new
+  operation" in the same 1-minute window (unauthorized deployments) and rolls
+  back those applications. Rechecks after 5s, 30s, and 3m until synced; reports
+  status at each step.
+enabled: true
+triggers:
+  - type: manual
+inputs:
+  - name: argocd_user
+    description: username for the argocd UI
+    type: string
+    default: "admin"
+  - name: argocd_pwd
+    description: password for the argocd UI
+    type: string
+    default: "password"
+  - name: argocd_url
+    description: base URL for the ArgoCD API (e.g. http://your-argocd-host)
+    type: string
+    default: "url"
+
+steps:
+  # --- Authenticate with ArgoCD so we can call the API ---
+  - name: get_argocd_token
+    type: http
+    with:
+      url: "{{ inputs.argocd_url }}/api/v1/session"
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        username: "{{ inputs.argocd_user }}"
+        password: "{{ inputs.argocd_pwd }}"
+      timeout: 30s
+
+  # --- Detect unauthorized deployments: 1-minute buckets with OutOfSync but no
+  #     matching "Initialized new operation" (ArgoCD did not initiate the change) ---
+  - name: get_unauthorized_deployments
+    type: elasticsearch.esql.query
+    with:
+      query: |
+        FROM logs.argocd, logs.argocd.*
+        | WHERE @timestamp > NOW() - 20 minutes
+        | WHERE body.text LIKE "*OutOfSync*" OR body.text LIKE "*Initialized new operation*"
+        | GROK body.text "%{GREEDYDATA}\"application\":\"%{DATA:application}\"%{GREEDYDATA}"
+        | EVAL app = COALESCE(application, "")
+        | STATS
+            count_out_of_sync = COUNT(*) WHERE body.text LIKE "*OutOfSync*",
+            count_initialized = COUNT(*) WHERE body.text LIKE "*Initialized new operation*"
+          BY bucket = TBUCKET(1 minute), app
+        | WHERE count_out_of_sync > 0 AND count_initialized == 0
+        | KEEP bucket, app
+        | SORT bucket DESC
+
+  # --- For each detected unauthorized app: confirm with ArgoCD, rollback if
+  #     still OutOfSync, then wait and recheck until synced (5s, 30s, 3m) ---
+  #     We get a fresh token inside the loop so nested steps (rechecks) can use
+  #     it; top-level steps may not be visible in deeply nested foreach/if scope.
+  - name: loop_over_unauthorized
+    type: foreach
+    foreach: "{{ steps.get_unauthorized_deployments.output.values }}"
+    steps:
+      - name: print_unauthorized
+        type: console
+        with:
+          message: |-
+            [Unauthorized deployment detected] Elastic Workflows have identified {{ foreach.item[1] | json }} as being out of sync since {{ foreach.item[0] | json }}. Proceeding to confirm with ArgoCD and rollback if needed.
+      - name: refresh_argocd_token
+        type: http
+        with:
+          url: "{{ inputs.argocd_url }}/api/v1/session"
+          method: POST
+          headers:
+            Content-Type: application/json
+          body:
+            username: "{{ inputs.argocd_user }}"
+            password: "{{ inputs.argocd_pwd }}"
+          timeout: 30s
+      - name: get_argocd_application
+        type: http
+        with:
+          url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[1] }}"
+          method: GET
+          headers:
+            Content-Type: application/json
+            Authorization: "Bearer {{ steps.refresh_argocd_token.output.data.token }}"
+          timeout: 30s
+      - name: print_confirmed_status
+        type: console
+        with:
+          message: |-
+            [ArgoCD confirmation] Application {{ foreach.item[1] | json }} status with ArgoCD: sync={{ steps.get_argocd_application.output.data.status.sync.status }}, health={{ steps.get_argocd_application.output.data.status.health.status }}.
+      # Only rollback when ArgoCD reports OutOfSync (per One Workflow: use if step, not when)
+      - name: if_out_of_sync_rollback
+        type: if
+        condition: "${{ steps.get_argocd_application.output.data.status.sync.status ==
+          'OutOfSync' }}"
+        steps:
+          - name: print_proceeding_rollback
+            type: console
+            with:
+              message: |-
+                [Rollback] Out of sync; triggering rollback to previous revision for {{ foreach.item[1] | json }}.
+          - name: rollback_argocd_application
+            type: http
+            with:
+              url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[1]
+                }}/rollback"
+              method: POST
+              headers:
+                Content-Type: application/json
+                Authorization: "Bearer {{ steps.refresh_argocd_token.output.data.token }}"
+              body:
+                id: ${{ steps.get_argocd_application.output.data.status.history[1].id }}
+              timeout: 30s
+          - name: print_rollback_result
+            type: console
+            with:
+              message: |-
+                [After rollback] Application {{ foreach.item[1] | json }} status: sync={{ steps.rollback_argocd_application.output.data.status.sync.status }}, health={{ steps.rollback_argocd_application.output.data.status.health.status }}. Will recheck in 5s if not yet Synced.
+          # First recheck: wait 5s then GET application again
+          - name: wait_5s
+            type: wait
+            with:
+              duration: "5s"
+          - name: get_app_recheck_5s
+            type: http
+            with:
+              url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[1] }}"
+              method: GET
+              headers:
+                Content-Type: application/json
+                Authorization: "Bearer {{ steps.refresh_argocd_token.output.data.token }}"
+              timeout: 30s
+          - name: print_status_after_5s
+            type: console
+            with:
+              message: |-
+                [Recheck after 5s] Application {{ foreach.item[1] | json }}: sync={{ steps.get_app_recheck_5s.output.data.status.sync.status }}, health={{ steps.get_app_recheck_5s.output.data.status.health.status }}.
+          # If still OutOfSync after 5s: wait 30s and recheck again
+          - name: if_still_out_of_sync_after_5s
+            type: if
+            condition: "${{ steps.get_app_recheck_5s.output.data.status.sync.status ==
+              'OutOfSync' }}"
+            steps:
+              - name: wait_30s
+                type: wait
+                with:
+                  duration: "30s"
+              - name: get_app_recheck_30s
+                type: http
+                with:
+                  url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[1] }}"
+                  method: GET
+                  headers:
+                    Content-Type: application/json
+                    Authorization: "Bearer {{ steps.refresh_argocd_token.output.data.token }}"
+                  timeout: 30s
+              - name: print_status_after_30s
+                type: console
+                with:
+                  message: |-
+                    [Recheck after 30s] Application {{ foreach.item[1] | json }}: sync={{ steps.get_app_recheck_30s.output.data.status.sync.status }}, health={{ steps.get_app_recheck_30s.output.data.status.health.status }}. Will wait 3m and recheck once more if still OutOfSync.
+              # If still OutOfSync after 30s: wait 3m and do final recheck
+              - name: if_still_out_of_sync_after_30s
+                type: if
+                condition: "${{ steps.get_app_recheck_30s.output.data.status.sync.status ==
+                  'OutOfSync' }}"
+                steps:
+                  - name: wait_3m
+                    type: wait
+                    with:
+                      duration: "3m"
+                  - name: get_app_recheck_3m
+                    type: http
+                    with:
+                      url: "{{ inputs.argocd_url }}/api/v1/applications/{{ foreach.item[1] }}"
+                      method: GET
+                      headers:
+                        Content-Type: application/json
+                        Authorization: "Bearer {{ steps.refresh_argocd_token.output.data.token }}"
+                      timeout: 30s
+                  - name: print_final_status
+                    type: console
+                    with:
+                      message: |-
+                        [Final recheck after 3m] Application {{ foreach.item[1] | json }}: sync={{ steps.get_app_recheck_3m.output.data.status.sync.status }}, health={{ steps.get_app_recheck_3m.output.data.status.health.status }}. Workflow completes; if still OutOfSync, manual follow-up may be needed.
+                else:
+                  - name: print_synced_after_30s
+                    type: console
+                    with:
+                      message: |-
+                        [Synced] Application {{ foreach.item[1] | json }} is now in sync after the 30s wait. Workflow complete for this application.
+            else:
+              - name: print_synced_after_5s
+                type: console
+                with:
+                  message: |-
+                    [Synced] Application {{ foreach.item[1] | json }} is now in sync after the 5s wait. Workflow complete for this application.
+    on-failure:
+      continue: true

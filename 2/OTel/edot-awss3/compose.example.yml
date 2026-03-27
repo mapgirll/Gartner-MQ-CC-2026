@@ -1,0 +1,28 @@
+# Example Docker Compose for EDOT Collector with awss3 + filterprocessor.
+# Build: docker compose -f compose.example.yml build
+# Run:   set ELASTIC_* and optional AWS_* / S3_* in .env, then docker compose -f compose.example.yml up -d
+
+services:
+  edot-collector:
+    image: edot-awss3
+    container_name: edot-collector-awss3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          memory: 1.5G
+    restart: unless-stopped
+    command: ["--config", "/etc/otelcol/config.yaml"]
+    ports:
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+    volumes:
+      - ./config.example.yaml:/etc/otelcol/config.yaml:ro
+    environment:
+      - ELASTIC_ENDPOINT=${ELASTIC_ENDPOINT}
+      - ELASTIC_API_KEY=${ELASTIC_API_KEY}
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      - S3_BUCKET=${S3_BUCKET}
+      - S3_PREFIX=${S3_PREFIX:-otel}

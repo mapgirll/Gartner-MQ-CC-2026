@@ -1,0 +1,30 @@
+{
+  "id": "argocd-sig-event-detector",
+  "type": "esql",
+  "description": "Detects and returns which significant events ran on the ArgCD logs in the last 24 hours.",
+  "tags": [
+    "argocd"
+  ],
+  "configuration": {
+    "query": """FROM .alerts-*,logs.argocd
+| WHERE @timestamp >= NOW() - 24 hour
+| WHERE kibana.alert.rule.name LIKE "*Deployment Out of Sync*"
+   OR kibana.alert.rule.name LIKE "*Deleted Deployment*"
+   OR kibana.alert.rule.name LIKE "*New Deployment*"
+   OR rule.name LIKE "*Deployment Out of Sync*"
+   OR rule.name LIKE "*Deleted Deployment*"
+   OR rule.name LIKE "*New Deployment*"
+| KEEP @timestamp, kibana.alert.rule.name, kibana.alert.last_detected
+| SORT @timestamp DESC
+| LIMIT 10""",
+    "params": {}
+  },
+  "readonly": false,
+  "schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false,
+    "description": "Parameters needed to execute the query",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

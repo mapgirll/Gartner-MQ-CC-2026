@@ -1,0 +1,6 @@
+region,g_co2_per_kwh,region_label,effective_date
+us-east-1,412,Virginia (higher fossil),2026-02-01
+us-west-2,318,Oregon (mixed grid),2026-02-01
+eu-west-1,295,Ireland (greener),2026-02-01
+eu-central-1,338,Frankfurt (mixed),2026-02-01
+ap-southeast-1,398,Singapore (higher fossil),2026-02-01

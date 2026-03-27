@@ -1,0 +1,40 @@
+{
+  "id": "search-container-state-change",
+  "type": "esql",
+  "description": "This tool searches the Elastic Agent logs for any record of container status changes within 15 minutes either side of a given event time.",
+  "tags": [
+    "argocd"
+  ],
+  "configuration": {
+    "query": """FROM logs-elastic_agent-default
+| WHERE unit.id LIKE "*logs-kubernetes*"
+  AND @timestamp >= ?timestamp - 15 minutes
+  AND @timestamp <= ?timestamp + 15 minutes
+| DISSECT unit.id "%{prefix}.%{container}"
+| KEEP @timestamp, unit.state, container""",
+    "params": {
+      "timestamp": {
+        "type": "date",
+        "description": "timestamp of significant event",
+        "optional": false
+      }
+    }
+  },
+  "readonly": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "timestamp of significant event"
+      }
+    },
+    "required": [
+      "timestamp"
+    ],
+    "additionalProperties": false,
+    "description": "Parameters needed to execute the query",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

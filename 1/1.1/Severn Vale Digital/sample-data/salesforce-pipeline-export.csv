@@ -1,0 +1,141 @@
+date,stage,product,region,opportunity_count,pipeline_value_usd,weighted_value_usd
+2026-02-01,Discovery,Platform,NA,12,502038,121744
+2026-02-01,Qualification,Platform,NA,9,386023,183360
+2026-02-01,Proposal,Platform,NA,5,323920,215406
+2026-02-01,Negotiation,Platform,NA,5,214563,176799
+2026-02-01,Closed Won,Platform,NA,4,136316,139042
+2026-02-02,Discovery,Platform,NA,15,509933,128758
+2026-02-02,Qualification,Platform,NA,10,336176,163045
+2026-02-02,Proposal,Platform,NA,7,336454,228452
+2026-02-02,Negotiation,Platform,NA,5,218665,169684
+2026-02-02,Closed Won,Platform,NA,3,142374,148068
+2026-02-03,Discovery,Platform,NA,14,489440,126030
+2026-02-03,Qualification,Platform,NA,12,346526,178460
+2026-02-03,Proposal,Platform,NA,7,338492,225097
+2026-02-03,Negotiation,Platform,NA,7,225440,185762
+2026-02-03,Closed Won,Platform,NA,6,143933,146811
+2026-02-04,Discovery,Platform,NA,11,503277,123302
+2026-02-04,Qualification,Platform,NA,9,399144,201567
+2026-02-04,Proposal,Platform,NA,4,326051,219106
+2026-02-04,Negotiation,Platform,NA,4,217140,180660
+2026-02-04,Closed Won,Platform,NA,1,143487,140617
+2026-02-05,Discovery,Platform,NA,12,486887,125373
+2026-02-05,Qualification,Platform,NA,9,396028,205934
+2026-02-05,Proposal,Platform,NA,5,333274,242623
+2026-02-05,Negotiation,Platform,NA,3,249718,197776
+2026-02-05,Closed Won,Platform,NA,4,143068,144498
+2026-02-06,Discovery,Platform,NA,14,567266,140398
+2026-02-06,Qualification,Platform,NA,10,389533,194766
+2026-02-06,Proposal,Platform,NA,7,320573,228889
+2026-02-06,Negotiation,Platform,NA,4,246229,187134
+2026-02-06,Closed Won,Platform,NA,3,138311,136927
+2026-02-07,Discovery,Platform,NA,16,514949,131311
+2026-02-07,Qualification,Platform,NA,12,352677,181628
+2026-02-07,Proposal,Platform,NA,9,351642,253533
+2026-02-07,Negotiation,Platform,NA,6,224238,175802
+2026-02-07,Closed Won,Platform,NA,5,152311,152311
+2026-02-08,Discovery,Platform,NA,13,480974,122648
+2026-02-08,Qualification,Platform,NA,8,342239,174541
+2026-02-08,Proposal,Platform,NA,5,342659,244658
+2026-02-08,Negotiation,Platform,NA,3,225172,183740
+2026-02-08,Closed Won,Platform,NA,1,149147,147655
+2026-02-09,Discovery,Platform,NA,13,483613,122112
+2026-02-09,Qualification,Platform,NA,9,331086,168853
+2026-02-09,Proposal,Platform,NA,6,333050,237797
+2026-02-09,Negotiation,Platform,NA,3,212019,164526
+2026-02-09,Closed Won,Platform,NA,2,145715,144257
+2026-02-10,Discovery,Platform,NA,14,524978,131244
+2026-02-10,Qualification,Platform,NA,10,360848,182228
+2026-02-10,Proposal,Platform,NA,6,303242,214392
+2026-02-10,Negotiation,Platform,NA,4,230624,177119
+2026-02-10,Closed Won,Platform,NA,5,133626,130953
+2026-02-11,Discovery,Platform,NA,16,492793,121966
+2026-02-11,Qualification,Platform,NA,12,362883,188699
+2026-02-11,Proposal,Platform,NA,8,283669,198568
+2026-02-11,Negotiation,Platform,NA,6,217357,165191
+2026-02-11,Closed Won,Platform,NA,6,146851,145382
+2026-02-12,Discovery,Platform,NA,13,468317,117079
+2026-02-12,Qualification,Platform,NA,9,321249,162230
+2026-02-12,Proposal,Platform,NA,6,324893,229699
+2026-02-12,Negotiation,Platform,NA,3,207431,159307
+2026-02-12,Closed Won,Platform,NA,2,144276,141390
+2026-02-13,Discovery,Platform,NA,13,503845,120922
+2026-02-13,Qualification,Platform,NA,8,360236,172913
+2026-02-13,Proposal,Platform,NA,6,330485,240593
+2026-02-13,Negotiation,Platform,NA,5,199482,153202
+2026-02-13,Closed Won,Platform,NA,4,132574,125945
+2026-02-14,Discovery,Platform,NA,14,475193,122362
+2026-02-14,Qualification,Platform,NA,10,326832,169952
+2026-02-14,Proposal,Platform,NA,7,308574,216001
+2026-02-14,Negotiation,Platform,NA,4,211771,167722
+2026-02-14,Closed Won,Platform,NA,3,147870,149348
+2026-02-15,Discovery,Platform,NA,16,469558,117389
+2026-02-15,Qualification,Platform,NA,12,347748,165180
+2026-02-15,Proposal,Platform,NA,9,327025,231206
+2026-02-15,Negotiation,Platform,NA,6,224985,179988
+2026-02-15,Closed Won,Platform,NA,4,132463,135112
+2026-02-16,Discovery,Platform,NA,11,508315,125807
+2026-02-16,Qualification,Platform,NA,7,351079,175539
+2026-02-16,Proposal,Platform,NA,6,295594,206915
+2026-02-16,Negotiation,Platform,NA,4,227484,172887
+2026-02-16,Closed Won,Platform,NA,1,155390,153836
+2026-02-17,Discovery,Platform,NA,12,488839,119765
+2026-02-17,Qualification,Platform,NA,8,337576,167100
+2026-02-17,Proposal,Platform,NA,5,339929,235570
+2026-02-17,Negotiation,Platform,NA,4,239692,184083
+2026-02-17,Closed Won,Platform,NA,4,154149,147983
+2026-02-18,Discovery,Platform,NA,15,542433,131540
+2026-02-18,Qualification,Platform,NA,11,376034,184256
+2026-02-18,Proposal,Platform,NA,8,352226,256420
+2026-02-18,Negotiation,Platform,NA,4,248620,200884
+2026-02-18,Closed Won,Platform,NA,3,145321,138054
+2026-02-19,Discovery,Platform,NA,16,484553,118715
+2026-02-19,Qualification,Platform,NA,12,388021,201770
+2026-02-19,Proposal,Platform,NA,9,321201,215847
+2026-02-19,Negotiation,Platform,NA,7,258227,214844
+2026-02-19,Closed Won,Platform,NA,5,147494,151918
+2026-02-20,Discovery,Platform,NA,12,493448,128296
+2026-02-20,Qualification,Platform,NA,9,405894,192799
+2026-02-20,Proposal,Platform,NA,5,322653,228115
+2026-02-20,Negotiation,Platform,NA,3,262761,210208
+2026-02-20,Closed Won,Platform,NA,1,158018,161178
+2026-02-21,Discovery,Platform,NA,13,537273,137004
+2026-02-21,Qualification,Platform,NA,9,373404,192303
+2026-02-21,Proposal,Platform,NA,6,371879,268124
+2026-02-21,Negotiation,Platform,NA,3,243432,190850
+2026-02-21,Closed Won,Platform,NA,2,170584,170584
+2026-02-22,Discovery,Platform,NA,15,575620,145344
+2026-02-22,Qualification,Platform,NA,11,401020,204520
+2026-02-22,Proposal,Platform,NA,7,340193,242897
+2026-02-22,Negotiation,Platform,NA,5,260729,202325
+2026-02-22,Closed Won,Platform,NA,3,157690,156113
+2026-02-23,Discovery,Platform,NA,16,519652,127314
+2026-02-23,Qualification,Platform,NA,11,374944,183722
+2026-02-23,Proposal,Platform,NA,8,373526,256238
+2026-02-23,Negotiation,Platform,NA,6,252132,197671
+2026-02-23,Closed Won,Platform,NA,4,172662,164028
+2026-02-24,Discovery,Platform,NA,12,587554,142481
+2026-02-24,Qualification,Platform,NA,7,370776,189095
+2026-02-24,Proposal,Platform,NA,4,348525,239088
+2026-02-24,Negotiation,Platform,NA,4,243236,188751
+2026-02-24,Closed Won,Platform,NA,1,159561,154774
+2026-02-25,Discovery,Platform,NA,12,567877,147648
+2026-02-25,Qualification,Platform,NA,8,396554,188363
+2026-02-25,Proposal,Platform,NA,7,336735,223928
+2026-02-25,Negotiation,Platform,NA,4,264406,207294
+2026-02-25,Closed Won,Platform,NA,3,158266,161431
+2026-02-26,Discovery,Platform,NA,14,504755,127450
+2026-02-26,Qualification,Platform,NA,9,407822,212067
+2026-02-26,Proposal,Platform,NA,8,346744,252429
+2026-02-26,Negotiation,Platform,NA,4,232741,180607
+2026-02-26,Closed Won,Platform,NA,4,163241,164873
+2026-02-27,Discovery,Platform,NA,16,543189,133081
+2026-02-27,Qualification,Platform,NA,12,379691,187947
+2026-02-27,Proposal,Platform,NA,8,322280,223340
+2026-02-27,Negotiation,Platform,NA,6,250075,208062
+2026-02-27,Closed Won,Platform,NA,4,153442,147304
+2026-02-28,Discovery,Platform,NA,12,514565,127354
+2026-02-28,Qualification,Platform,NA,8,359683,179841
+2026-02-28,Proposal,Platform,NA,4,351123,233496
+2026-02-28,Negotiation,Platform,NA,2,238352,181147
+2026-02-28,Closed Won,Platform,NA,2,167617,165940

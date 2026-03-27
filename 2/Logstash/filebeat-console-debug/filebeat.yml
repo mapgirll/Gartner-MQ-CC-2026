@@ -1,0 +1,55 @@
+# Filebeat config: same input + redaction as Elastic Agent, output to CONSOLE only.
+# Run this container and use "docker logs -f filebeat-redaction-proof" to see
+# events AFTER processors (PII redacted) — proves redaction happens in the beat, not in ES.
+
+filebeat.inputs:
+  - type: filestream
+    id: app-logs-debug
+    paths:
+      - /var/log/app.log
+      - /var/log/application.log
+      - /var/log/service.log
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          message_key: message
+    ignore_older: 72h
+
+# Same PII redaction as filestream-processors.yaml (proves it runs before output)
+processors:
+  - replace:
+      fields:
+        - field: "userEmail"
+          pattern: "^.+$"
+          replacement: "[REDACTED_EMAIL]"
+      ignore_missing: true
+      fail_on_error: false
+  - replace:
+      fields:
+        - field: "clientIp"
+          pattern: "^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$"
+          replacement: "[REDACTED_IP]"
+      ignore_missing: true
+      fail_on_error: false
+  - replace:
+      fields:
+        - field: "message"
+          pattern: "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+          replacement: "[REDACTED_EMAIL]"
+      ignore_missing: true
+      fail_on_error: false
+  - replace:
+      fields:
+        - field: "message"
+          pattern: "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"
+          replacement: "[REDACTED_IP]"
+      ignore_missing: true
+      fail_on_error: false
+
+# Console only — so you see exactly what would be sent (with redaction applied)
+output.console:
+  pretty: true
+
+logging.level: info
+logging.to_stderr: true

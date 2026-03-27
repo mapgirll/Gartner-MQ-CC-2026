@@ -1,0 +1,41 @@
+{
+  "id": "kubernetes_unit_change_searcher",
+  "type": "esql",
+  "description": "Searches logs for unit changes indicating changing of resources.",
+  "tags": [
+    "argocd"
+  ],
+  "configuration": {
+    "query": """FROM logs, logs.*
+| WHERE message LIKE "*UnitChanged.Trigger*"
+  AND @timestamp >= ?timestamp - 15 minutes
+  AND @timestamp <= ?timestamp + 15 minutes
+| DISSECT message "%{before_id}UnitChanged.ID(%{UnitChanged_ID}), UnitChanged.Type(%{UnitChanged_Type}), UnitChanged.Trigger(%{UnitChanged_Trigger})%{rest}"
+| DISSECT UnitChanged_ID "%{prefix}.%{unitName}"
+| STATS event_count = COUNT(*) BY bucket = TBUCKET(1 minute), UnitChanged_Type, unitName
+| KEEP UnitChanged_Type, event_count, unitName""",
+    "params": {
+      "timestamp": {
+        "type": "text",
+        "description": "timestamp to search around",
+        "optional": false
+      }
+    }
+  },
+  "readonly": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "timestamp": {
+        "type": "string",
+        "description": "timestamp to search around"
+      }
+    },
+    "required": [
+      "timestamp"
+    ],
+    "additionalProperties": false,
+    "description": "Parameters needed to execute the query",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

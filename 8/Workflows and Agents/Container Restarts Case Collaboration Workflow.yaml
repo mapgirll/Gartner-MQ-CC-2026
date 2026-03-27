@@ -1,0 +1,69 @@
+name: Container Restarts Case Collaboration Workflow
+enabled: true
+description: This is a new workflow
+triggers:
+  - type: manual
+  - type: alert
+
+inputs:
+  - name: message
+    type: string
+    default: "hello world"
+
+steps:
+  # --- When triggered by alert: print rule name, service (instance id), execution timestamp ---
+  - name: print_alert_context
+    type: console
+    with:
+      message: |-
+        The workflow has been triggered due to an alert on the {{ event.rule.name }} rule for the {{ event.alerts.0["kibana.alert.instance.id"] }} service. This alert is from a high number of restarts.
+        The alert was triggered at {{ event.alerts.0["kibana.alert.rule.execution.timestamp"] }}.
+  - name: ask_k8s_pod_troubleshooter_for_help
+    type: ai.agent
+    with:
+      agent_id: kubernetes-pod-troubleshooter
+      message: |-
+        The alert was triggered at {{ event.alerts.0["kibana.alert.rule.execution.timestamp"] }} on the {{ event.rule.name }} rule for the {{ event.alerts.0["kibana.alert.instance.id"] }} service.
+
+        Please investigate the {{ event.rule.name }} for the {{ event.alerts.0["kibana.alert.instance.id"] }} service and respond with the following so we can expedite triage, resolution, and communication:
+
+        1. Summary: First provide a single-sentence summary suitable for a ticket title and Slack (e.g. "OOMKilled on cart in default; memory limit 100Mi exceeded; recommend 200Mi."). Then suggest a priority (High/Medium) and one sentence on impact if relevant. On a new line add 2–3 sentences in plain language that can be pasted as-is into a Jira description or Slack message (root cause, recommended action, and where to find full details).
+
+        2. Root Cause Analysis: Clearly state the most likely cause of the alert. Include why the container has been restarting, what error or termination reasons exist for the pod, and key metrics (e.g. memory limit vs usage). Include exact identifiers the on-call needs: namespace, cluster name, deployment name, pod name or label selector. The pod_restarts tool will provide this information."
+
+        3. Remediation: In a dedicated heading, include concrete remediation steps. Provide at least one copy-paste command (e.g. kubectl patch or kubectl edit) or the exact resource path (e.g. "Deployment cart in namespace default") so the fix can be applied without searching. Include example YAML or commands to confirm the root cause. If the cluster uses GitOps, state which repo/file to update.
+  - name: create-elastic-case
+    type: kibana.createCase
+    with:
+      settings:
+        syncAlerts: false
+      severity: high
+      owner: observability
+      tags:
+        - cart
+      connector: 
+        id: none
+        name: none
+        type: .none
+        fields: null
+      title: 'Alerts: {{ event.rule.name }} for the {{ event.alerts.0["kibana.alert.instance.id"] }} service'
+      description: "{{steps.ask_k8s_pod_troubleshooter_for_help.output}}"
+  - name: kibana-get-connectors
+    type: kibana.request
+    with:
+      method: "GET"
+      path: "/api/actions/connectors"
+  - name: extract-summary
+    type: console
+    with:
+      message: |-
+        {{ steps.create-elastic-case.output.description | split: "## 2." | first | replace: "## 1. Summary", "*SUMMARY:*" | replace: "**", "*" | replace: "---", ""}}
+  - name: notify-slack
+    type: slack
+    connector-id: "d32e8888-c74b-4a20-be01-69476f72a4e9"
+    with:
+      message: |-
+        :rotating_light: *New Alert:* {{ event.rule.name }} for the {{ event.alerts.0["kibana.alert.instance.id"] }} service. :rotating_light:
+        <https://deployment.elastic-cloud.com/app/observability/cases/{{ steps.create_elastic_case.output.id }}|This case requires your attention.>
+        {{steps.extract-summary.output}}
+    

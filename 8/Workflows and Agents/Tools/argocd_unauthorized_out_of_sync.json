@@ -1,0 +1,47 @@
+{
+  "id": "argocd_unauthorized_out_of_sync",
+  "type": "esql",
+  "description": "This tool checks the ArgoCD logs to detect unauthorized deployments that happened to an application outside of the ArgoCD management.",
+  "tags": [
+    "argocd"
+  ],
+  "configuration": {
+    "query": """FROM logs.argocd,logs.argocd.*
+| WHERE @timestamp >= ?timestamp - 15 minutes
+  AND @timestamp <= ?timestamp + 15 minutes
+| WHERE body.text LIKE "*OutOfSync*" OR body.text LIKE "*Initialized new operation*"
+| GROK body.text "%{GREEDYDATA}\"application\":\"%{DATA:application}\"%{GREEDYDATA}"
+| EVAL app = COALESCE(application, "")
+| STATS
+    count_out_of_sync   = COUNT(*) WHERE message LIKE "*OutOfSync*",
+    count_initialized    = COUNT(*) WHERE message LIKE "*Initialized new operation*"
+  BY bucket = TBUCKET(1 minute), app
+| WHERE count_out_of_sync > 0 AND count_initialized == 0
+| KEEP bucket, app
+| SORT bucket DESC""",
+    "params": {
+      "timestamp": {
+        "type": "date",
+        "description": "timestamp to search around",
+        "optional": false
+      }
+    }
+  },
+  "readonly": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "timestamp to search around"
+      }
+    },
+    "required": [
+      "timestamp"
+    ],
+    "additionalProperties": false,
+    "description": "Parameters needed to execute the query",
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

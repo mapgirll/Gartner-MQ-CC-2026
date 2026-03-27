@@ -1,0 +1,10 @@
+# Add these lines in distributions/elastic-components/manifest.yaml
+# (in a clone of https://github.com/elastic/opentelemetry-collector-components)
+#
+# Under "processors:" (e.g. after filterprocessor):
+#   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/redactionprocessor v0.147.0
+#
+# Under "exporters:":
+#   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awss3exporter v0.147.0
+#
+# filterprocessor is already present in that manifest; no change needed.
